@@ -60,6 +60,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
+<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>

@@ -16,7 +16,9 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form action="{{route('users.update', $user->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
                         @include('users.form')
                         <!-- /.card-body -->
 

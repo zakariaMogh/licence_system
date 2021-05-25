@@ -16,7 +16,8 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form action="{{route('users.store')}}" method="post">
+                        @csrf
                         @include('users.form')
                         <!-- /.card-body -->
 

@@ -13,7 +13,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,31 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'name' => 'required|string|max:60',
+            'email' => 'required|email|max:60|unique:users,email',
+            'password' => 'required|string|confirmed|min:8|max:40',
+//            'is_admin' => 'in:on,off'
         ];
+
+        if ($this->method() === 'PUT')
+        {
+            $rules['password'] = 'sometimes|nullable|string|confirmed|min:8|max:40';
+            $rules['email'] = 'required|email|unique:users,email,'.$this->user->id;
+        }
+        return $rules;
     }
+
+
+//    public function getValidatorInstance()
+//    {
+//        $this->formatIsAdmin();
+//
+//        return parent::getValidatorInstance();
+//    }
+//
+//    protected function formatIsAdmin()
+//    {
+//        $this->request->set('is_admin', $this->request->get('is_admin') == 'on' ? 1 : 0);
+//    }
 }

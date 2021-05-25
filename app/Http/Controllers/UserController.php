@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\QueryFilter\UserSearch;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Pipeline;
 
 class UserController extends Controller
 {
@@ -15,8 +17,14 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        return view('users.index');
+        $users = app(Pipeline::class)
+            ->send(User::latest()->newQuery())
+            ->through([
+                UserSearch::class,
+            ])
+            ->thenReturn()
+            ->paginate(10);
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -38,6 +46,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $data = $request->validated();
+        $data['password'] = bcrypt($data['password']);
+        User::create($data);
+        session()->flash('success',__('messages.create',['name' => __('messages.user')]));
         return redirect()->route('users.index');
     }
 
@@ -74,6 +86,14 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
+        $data = $request->validated();
+        if (isset($data['password'])){
+            $data['password'] = bcrypt($data['password']);
+        }else{
+            unset($data['password']);
+        }
+        $user->update($data);
+        session()->flash('success',__('messages.update',['name' => __('messages.user')]));
         return redirect()->route('users.index');
     }
 
@@ -85,6 +105,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $user->delete();
+        session()->flash('success',__('messages.delete',['name' => __('messages.user')]));
         return redirect()->route('users.index');
     }
 }

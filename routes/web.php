@@ -13,16 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
+Route::get('/login', [\App\Http\Controllers\LoginController::class,'index'])->name('login.form');
+
+Route::post('/login', [\App\Http\Controllers\LoginController::class,'login'])->name('login');
+
+Route::middleware('auth')->group(static function() {
+    Route::any('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+
+    Route::get('dashboard',[\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('users', \App\Http\Controllers\UserController::class);
+    Route::resource('products', \App\Http\Controllers\ProductController::class);
+    Route::resource('licences', \App\Http\Controllers\LicenceController::class);
+    Route::resource('clients', \App\Http\Controllers\ClientController::class);
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
-Route::view('/users','users.index')->name('users.index');
-Route::view('/products','products.index')->name('products.index');
-Route::view('/clients','clients.index')->name('clients.index');
-Route::view('/licences','licences.index')->name('licences.index');
 
-Route::resource('users', \App\Http\Controllers\UserController::class);

@@ -1,26 +1,46 @@
 <div class="card-body">
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        <label for="email">Email</label>
+        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+               placeholder="Enter email" value="{{$user->email ?? old('email')}}">
+        @error('email')
+        <span class="text-danger small">
+                                        {{$message}}
+                                    </span>
+        @enderror
     </div>
+
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="name">Name</label>
+        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+               placeholder="Enter name" value="{{$user->name ?? old('name')}}">
+        @error('name')
+        <span class="text-danger small">
+                                        {{$message}}
+                                    </span>
+        @enderror
     </div>
+
     <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <div class="input-group">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="exampleInputFile">
-                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-            </div>
-            <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
-            </div>
-        </div>
+        <label for="password">Password</label>
+        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
+               name="password" placeholder="Enter password">
+        @error('password')
+        <span class="text-danger small">
+                                        {{$message}}
+                                    </span>
+        @enderror
     </div>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+    <div class="form-group">
+        <label for="password_confirmation">Password confirmation</label>
+        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password_confirmation"
+               name="password_confirmation" placeholder="Enter password confirmation">
+
     </div>
+
+    {{--    <div class="form-check">--}}
+    {{--        <input type="checkbox" class="form-check-input" id="is_admin" name="is_admin">--}}
+    {{--        <label class="form-check-label" for="is_admin">Admin</label>--}}
+    {{--    </div>--}}
 </div>
