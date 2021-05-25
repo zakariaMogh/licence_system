@@ -23,8 +23,17 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'name' => 'required|string|max:60',
+            'code' => 'required|string|max:60|unique:products,code',
+            'version' => 'required|numeric|max:99999.9999|min:0',
         ];
+
+        if ($this->method() === 'PUT')
+        {
+            unset($rules['code']);
+//            $rules['code'] = 'required|string|unique:products,code,'.$this->product->id;
+        }
+        return $rules;
     }
 }

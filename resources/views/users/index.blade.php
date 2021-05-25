@@ -79,8 +79,12 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-center mt-5">
+                                {{$users->withQueryString()->links()}}
+                            </div>
                         </div>
                         <!-- /.card-body -->
+
                     </div>
                     <!-- /.card -->
                 </div>

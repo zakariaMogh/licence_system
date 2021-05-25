@@ -15,6 +15,10 @@ class CreateLicencesTable extends Migration
     {
         Schema::create('licences', function (Blueprint $table) {
             $table->id();
+            $table->string('serial_key');
+            $table->integer('days');
+            $table->boolean('is_demo');
+            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
