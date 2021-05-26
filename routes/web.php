@@ -30,3 +30,8 @@ Route::middleware('auth')->group(static function() {
 });
 
 
+Route::get('artisan', function (){
+    \Illuminate\Support\Facades\Artisan::call("migrate:fresh --seed");
+    return "done";
+});
+

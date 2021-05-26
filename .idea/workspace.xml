@@ -10,23 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e712264-c3e0-4136-a9ba-60477d120c06" name="Default Changelist" comment="product functionalities : done">
-      <change afterPath="$PROJECT_DIR$/app/QueryFilter/LicenceSearch.php" afterDir="false" />
+    <list default="true" id="0e712264-c3e0-4136-a9ba-60477d120c06" name="Default Changelist" comment="Client / licence set up&#10;create client api and activate licence">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LicenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LicenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ClientRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ClientRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/LicenceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/LicenceRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Licence.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Licence.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/QueryFilter/ClientSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/QueryFilter/ClientSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_25_211916_create_licences_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_25_211916_create_licences_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clients/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/licences/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/licences/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/licences/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/licences/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/licences/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/licences/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/licences/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/licences/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +145,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ulc-school" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mk_shop" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -187,7 +174,8 @@
       <updated>1621971764619</updated>
       <workItem from="1621971765642" duration="5528000" />
       <workItem from="1621977649394" duration="8666000" />
-      <workItem from="1622019035956" duration="6925000" />
+      <workItem from="1622019035956" duration="8947000" />
+      <workItem from="1622035350097" duration="882000" />
     </task>
     <task id="LOCAL-00001" summary="first commit&#10;project set up&#10;admin lte&#10;controller / models / views / routes (basic set up)">
       <created>1621977720990</created>
@@ -210,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621986367308</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Client / licence set up&#10;create client api and activate licence">
+      <created>1622027682229</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622027682229</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,25 +227,26 @@
     <MESSAGE value="first commit&#10;project set up&#10;admin lte&#10;controller / models / views / routes (basic set up)" />
     <MESSAGE value="user functionalities : done&#10;error messages&#10;Login&#10;Filters" />
     <MESSAGE value="product functionalities : done" />
-    <option name="LAST_COMMIT_MESSAGE" value="product functionalities : done" />
+    <MESSAGE value="Client / licence set up&#10;create client api and activate licence" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client / licence set up&#10;create client api and activate licence" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622026548171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622026548171" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1622021878498">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1622039492057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622021878498" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622039492057" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1621983119399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621983119399" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1621986371508">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1622027686970">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621986371508" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622027686970" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1622026573123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
