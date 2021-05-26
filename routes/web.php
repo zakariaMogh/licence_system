@@ -20,6 +20,7 @@ Route::post('/login', [\App\Http\Controllers\LoginController::class,'login'])->n
 Route::middleware('auth')->group(static function() {
     Route::any('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
+    Route::get('',[\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('dashboard',[\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('users', \App\Http\Controllers\UserController::class);

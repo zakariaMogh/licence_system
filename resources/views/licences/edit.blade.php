@@ -16,7 +16,9 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form action="{{route('licences.update', $licence->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
                         @include('licences.form')
                         <!-- /.card-body -->
 

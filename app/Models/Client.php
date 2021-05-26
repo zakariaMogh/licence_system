@@ -18,6 +18,11 @@ class Client extends Model
         'phone'
     ];
 
+    public function getNameAttribute()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
+
     public function licence(): BelongsTo
     {
         return $this->belongsTo(Licence::class);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
 use App\Models\Client;
+use App\QueryFilter\ClientSearch;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Pipeline;
 
 class ClientController extends Controller
 {
@@ -15,8 +17,14 @@ class ClientController extends Controller
      */
     public function index()
     {
-
-        return view('clients.index');
+        $clients = app(Pipeline::class)
+            ->send(Client::latest()->with('licence')->newQuery())
+            ->through([
+                ClientSearch::class,
+            ])
+            ->thenReturn()
+            ->paginate(10);
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -27,7 +35,6 @@ class ClientController extends Controller
     public function create()
     {
         return view('clients.create');
-
     }
 
     /**

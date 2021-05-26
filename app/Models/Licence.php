@@ -14,7 +14,8 @@ class Licence extends Model
     protected $fillable = [
         'serial_key',
         'days',
-        'is_demo'
+        'is_demo',
+        'is_active'
     ];
 
     public function client(): HasOne

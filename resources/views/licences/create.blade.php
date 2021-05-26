@@ -16,7 +16,8 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form action="{{route('licences.store')}}" method="post">
+                        @csrf
                         @include('licences.form')
                         <!-- /.card-body -->
 

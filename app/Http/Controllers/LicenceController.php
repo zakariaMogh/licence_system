@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LicenceRequest;
 use App\Models\Licence;
+use App\Models\Product;
+use App\QueryFilter\LicenceSearch;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Pipeline;
+use Illuminate\Support\Str;
 
 class LicenceController extends Controller
 {
@@ -15,8 +19,14 @@ class LicenceController extends Controller
      */
     public function index()
     {
-
-        return view('licences.index');
+        $licences = app(Pipeline::class)
+            ->send(Licence::latest()->with('product')->newQuery())
+            ->through([
+                LicenceSearch::class,
+            ])
+            ->thenReturn()
+            ->paginate(10);
+        return view('licences.index', compact('licences'));
     }
 
     /**
@@ -26,7 +36,14 @@ class LicenceController extends Controller
      */
     public function create()
     {
-        return view('licences.create');
+        $products = Product::all();
+
+        do {
+            $serial_key = Str::random(16);
+        } while (Licence::where("serial_key", "=", $serial_key)->first() instanceof Licence);
+        $serial_key = substr(chunk_split($serial_key, 4, '-'), 0, -1);
+
+        return view('licences.create', compact('products', 'serial_key'));
 
     }
 
@@ -38,6 +55,9 @@ class LicenceController extends Controller
      */
     public function store(LicenceRequest $request)
     {
+        $product = Product::findOrFail($request->product);
+        $product->licences()->create($request->validated());
+        session()->flash('success',__('messages.create',['name' => __('messages.licence')]));
         return redirect()->route('licences.index');
     }
 
@@ -61,7 +81,8 @@ class LicenceController extends Controller
      */
     public function edit(Licence $licence)
     {
-        return view('licences.edit', compact('licence'));
+        $products = Product::all();
+        return view('licences.edit', compact('licence', 'products'));
 
     }
 
@@ -74,6 +95,10 @@ class LicenceController extends Controller
      */
     public function update(LicenceRequest $request, Licence $licence)
     {
+        $product = Product::findOrFail($request->product);
+        $licence->product()->associate($product);
+        $licence->update($request->validated());
+        session()->flash('success',__('messages.update',['name' => __('messages.licence')]));
         return redirect()->route('licences.index');
     }
 
@@ -85,6 +110,15 @@ class LicenceController extends Controller
      */
     public function destroy(Licence $licence)
     {
+        try {
+            $licence->client()->delete();
+            $licence->delete();
+            session()->flash('success',__('messages.update',['name' => __('messages.licence')]));
+        }catch (\Exception $exception)
+        {
+            session()->flash('error',__('messages.fails',['name' => __('messages.licence')]));
+        }
+
         return redirect()->route('licences.index');
     }
 }

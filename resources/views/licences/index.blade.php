@@ -14,8 +14,9 @@
                             <a href="{{route('licences.create')}}" class="btn btn-success">Add licence</a>
 
                             <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right"
+                                <form class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="licence_search" class="form-control float-right"
+                                           value="{{request()->get('licence_search')}}"
                                            placeholder="Search">
 
                                     <div class="input-group-append">
@@ -23,7 +24,7 @@
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -32,37 +33,63 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Licence</th>
-                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th>Serial key</th>
+                                    <th>Ending date</th>
+                                    <th>Demo</th>
                                     <th>Status</th>
-                                    <th>Reason</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">Approved</span></td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    <td>
-                                        <a class="btn btn-info rounded-circle btn-sm"
-                                           href="">
-                                            <i class="fas fa-folder"></i>
-                                        </a>
-                                        <a class="btn btn-info rounded-circle btn-sm"
-                                           href="">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a class="btn btn-info rounded-circle btn-sm"
-                                           >
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                @foreach($licences as $licence)
+                                    <tr>
+                                        <td>{{$licence->id}}</td>
+                                        <td>{{$licence->product->name}}</td>
+                                        <td>{{$licence->serial_key}}</td>
+                                        <td>{{$licence->days}}</td>
+                                        <td>
+                                            @if($licence->is_demo)
+                                                <span class="fas fa-check text-success"></span>
+                                            @else
+                                                <span class="fas fa-times text-danger"></span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($licence->is_active)
+                                                <span class="fas fa-check text-success"></span>
+                                            @else
+                                                <span class="fas fa-times text-danger"></span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info rounded-circle btn-sm"
+                                               href="">
+                                                <i class="fas fa-folder"></i>
+                                            </a>
+                                            <a class="btn btn-info rounded-circle btn-sm"
+                                               href="{{route('licences.edit', $licence->id)}}">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                            <button class="btn btn-info rounded-circle btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this licence')"
+                                                    form="delete-licence"
+                                            >
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <form action="{{route('licences.destroy', $licence->id)}}" method="post"
+                                                  id="delete-licence">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-center mt-5">
+                                {{$licences->withQueryString()->links()}}
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

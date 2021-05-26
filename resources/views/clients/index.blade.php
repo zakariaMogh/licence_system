@@ -11,11 +11,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{route('clients.create')}}" class="btn btn-success">Add client</a>
+{{--                            <a href="{{route('clients.create')}}" class="btn btn-success">Add client</a>--}}
 
                             <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right"
+                                <form class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="client_search" class="form-control float-right"
+                                           value="{{request()->get('client_search')}}"
                                            placeholder="Search">
 
                                     <div class="input-group-append">
@@ -23,7 +24,7 @@
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -32,20 +33,21 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Client</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Reason</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Company name</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($clients as $client)
                                 <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">Approved</span></td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    <td>{{$client->id}}</td>
+                                    <td>{{$client->name}}</td>
+                                    <td>{{$client->email}}</td>
+                                    <td>{{$client->phone}}</td>
+                                    <td>{{$client->company_name}}</td>
                                     <td>
                                         <a class="btn btn-info rounded-circle btn-sm"
                                            href="">
@@ -56,13 +58,17 @@
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                         <a class="btn btn-info rounded-circle btn-sm"
-                                           >
+                                        >
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-center mt-5">
+                                {{$clients->withQueryString()->links()}}
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
