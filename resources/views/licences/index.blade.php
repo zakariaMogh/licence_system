@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                        <div class="card-body table-responsive p-0" >
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                 <tr>
@@ -38,6 +38,7 @@
                                     <th>Ending date</th>
                                     <th>Demo</th>
                                     <th>Status</th>
+                                    <th>Hard drive</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -47,7 +48,7 @@
                                         <td>{{$licence->id}}</td>
                                         <td>{{$licence->product->name}}</td>
                                         <td>{{$licence->serial_key}}</td>
-                                        <td>{{$licence->days}}</td>
+                                        <td>{{$licence->days  ?? '/'}}</td>
                                         <td>
                                             @if($licence->is_demo)
                                                 <span class="fas fa-check text-success"></span>
@@ -62,6 +63,7 @@
                                                 <span class="fas fa-times text-danger"></span>
                                             @endif
                                         </td>
+                                        <td>{{$licence->hard_drive_number ?? '/'}}</td>
                                         <td>
                                             <a class="btn btn-info rounded-circle btn-sm"
                                                href="">

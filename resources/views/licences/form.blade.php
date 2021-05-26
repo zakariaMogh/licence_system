@@ -12,6 +12,17 @@
     </div>
 
     <div class="form-group">
+        <label for="hard_drive_number">Hard drive</label>
+        <input type="text" class="form-control @error('hard_drive_number') is-invalid @enderror" id="hard_drive_number" name="hard_drive_number"
+               placeholder="Enter Hard drive" value="{{$licence->hard_drive_number ?? old('hard_drive_number')}}" >
+        @error('hard_drive_number')
+        <span class="text-danger small">
+                                        {{$message}}
+                                    </span>
+        @enderror
+    </div>
+
+    <div class="form-group">
         <label for="name">Days</label>
         <input type="number" class="form-control @error('days') is-invalid @enderror" id="days" name="days"
                placeholder="Enter days" value="{{$licence->days ?? old('days')}}">

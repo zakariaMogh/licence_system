@@ -15,7 +15,8 @@ class Licence extends Model
         'serial_key',
         'days',
         'is_demo',
-        'is_active'
+        'is_active',
+        'hard_drive_number'
     ];
 
     public function client(): HasOne

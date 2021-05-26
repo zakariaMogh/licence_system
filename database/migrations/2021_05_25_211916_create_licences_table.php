@@ -19,6 +19,7 @@ class CreateLicencesTable extends Migration
             $table->integer('days')->nullable();
             $table->boolean('is_demo');
             $table->boolean('is_active')->default(false);
+            $table->string('hard_drive_number')->nullable();
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

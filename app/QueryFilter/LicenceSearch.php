@@ -13,6 +13,7 @@ class LicenceSearch extends Filter
         if (!empty($q))
         {
             return $builder->where('serial_key','like','%'.$q.'%')
+                ->orWhere('hard_drive_number','like','%'.$q.'%')
                 ->orWhereHas('product', function ($query) use ($q){
                     $query->where('code','like','%'.$q.'%')
                         ->orWhere('name','like','%'.$q.'%');

@@ -28,6 +28,7 @@ class LicenceRequest extends FormRequest
             'days' => 'sometimes|nullable|numeric|gt:0|max:9999',
             'is_demo' => 'in:0,1',
             'product' => 'required|integer|exists:products,id',
+            'hard_drive_number' => 'sometimes|nullable|string|max:60',
         ];
 
         if ($this->method() === 'PUT') {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientRequest;
 use App\Models\Licence;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -45,6 +46,7 @@ class ClientController extends Controller
             'email' => 'required|email|max:60',
             'phone' => 'required|string|max:60',
             'company_name' => 'required|string|max:60',
+            'hard_drive_number' => 'string|max:60'
 //            'serial_key' => 'required|integer|exists:licences,id',
         ]);
 
@@ -53,19 +55,33 @@ class ClientController extends Controller
             return response(['errors'=>$validator->errors()->all()], 422);
         }
 
+        if (!$request->hard_drive_number)
+        {
+            return response(['error' => 'This is a forbidden request'], 403);
+        }
+
+        if ($request->code)
+        {
+            $product = Product::where('code', $request->code)->first();
+            if (!$product){
+                return response(['error' => 'This is a forbidden request'], 403);
+            }
+        }else{
+            return response(['error' => 'This is a forbidden request'], 403);
+        }
+
         $licence = Licence::where('serial_key', $request->serial_key)->first();
-        if (!$licence || $licence->is_active)
+        if (!$licence || $licence->is_active && $licence->hard_drive_number != $request->hard_drive_number)
         {
             return response(['error' => 'Clé de série introuvable'], 402);
         }
 
-//        if ($licence->state)
-//        {
-//            return response(['error' => 'Clé de série introuvable'], 402);
-//        }
+        if (!$licence->is_active)
+        {
+            $licence->client()->create($request->all());
+            $licence->update(['is_active' => true, 'hard_drive_number' => $request->hard_drive_number]);
+        }
 
-        $licence->client()->create($request->all());
-        $licence->update(['is_active' => true]);
 
         return response(['success' => 'Votre produit a été activé avec succès'], 200);
     }
