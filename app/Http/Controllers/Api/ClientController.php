@@ -70,7 +70,10 @@ class ClientController extends Controller
             return response(['error' => 'This is a forbidden request'], 403);
         }
 
-        $licence = Licence::where('serial_key', $request->serial_key)->first();
+        $licence = Licence::where('serial_key', $request->serial_key)->whereHas('product', function ($query) use ($request)
+        {
+            $query->where('code', $request->code);
+        })->first();
         if (!$licence || $licence->is_active && $licence->hard_drive_number != $request->hard_drive_number)
         {
             return response(['error' => 'Clé de série introuvable'], 402);

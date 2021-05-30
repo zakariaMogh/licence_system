@@ -10,18 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e712264-c3e0-4136-a9ba-60477d120c06" name="Default Changelist" comment="navbar &#10;artisan route">
+    <list default="true" id="0e712264-c3e0-4136-a9ba-60477d120c06" name="Default Changelist" comment="hard_drive_number">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/LicenceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/LicenceRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Licence.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Licence.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/QueryFilter/LicenceSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/QueryFilter/LicenceSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_25_211916_create_licences_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_25_211916_create_licences_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clients/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/licences/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/licences/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/licences/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/licences/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +143,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mk_shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -182,7 +173,9 @@
       <workItem from="1621971765642" duration="5528000" />
       <workItem from="1621977649394" duration="8666000" />
       <workItem from="1622019035956" duration="8947000" />
-      <workItem from="1622035350097" duration="6697000" />
+      <workItem from="1622035350097" duration="7342000" />
+      <workItem from="1622211531416" duration="1359000" />
+      <workItem from="1622368955971" duration="84000" />
     </task>
     <task id="LOCAL-00001" summary="first commit&#10;project set up&#10;admin lte&#10;controller / models / views / routes (basic set up)">
       <created>1621977720990</created>
@@ -219,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622039617176</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="hard_drive_number">
+      <created>1622057616632</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622057616632</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,25 +243,26 @@
     <MESSAGE value="product functionalities : done" />
     <MESSAGE value="Client / licence set up&#10;create client api and activate licence" />
     <MESSAGE value="navbar &#10;artisan route" />
-    <option name="LAST_COMMIT_MESSAGE" value="navbar &#10;artisan route" />
+    <MESSAGE value="hard_drive_number" />
+    <option name="LAST_COMMIT_MESSAGE" value="hard_drive_number" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622026548171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622026548171" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1622039492057">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1622213704235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622039492057" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622213704235" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1621983119399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621983119399" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1622039621261">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1622057619874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622039621261" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622057619874" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1622026573123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
